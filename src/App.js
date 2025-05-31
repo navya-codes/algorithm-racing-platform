@@ -58,6 +58,8 @@ const AlgorithmRacingPlatform = () => {
       emoji: '🎯',
       category: 'Sorting'
     },
+
+    //advanced sorting
     { 
       name: 'Insertion Sort', 
       color: '#FF9FF3', 
@@ -66,5 +68,68 @@ const AlgorithmRacingPlatform = () => {
       emoji: '📝',
       category: 'Sorting'
     },
+
+    { 
+      name: 'Heap Sort', 
+      color: '#96CEB4', 
+      speed: 0.75, 
+      description: 'Steady climber',
+      emoji: '🏔️',
+      category: 'Sorting'
+    },
+    { 
+      name: 'Selection Sort', 
+      color: '#FECA57', 
+      speed: 0.4, 
+      description: 'Methodical approach',
+      emoji: '🎯',
+      category: 'Sorting'
+    },
+    { 
+      name: 'Insertion Sort', 
+      color: '#FF9FF3', 
+      speed: 0.5, 
+      description: 'Good with small data',
+      emoji: '📝',
+      category: 'Sorting'
+    },
+
+    //search algorithms
+    { 
+      name: 'Binary Search', 
+      color: '#DDA0DD', 
+      speed: 0.95, 
+      description: 'Divide and find',
+      emoji: '🔍',
+      category: 'Search'
+    },
+    { 
+      name: 'Linear Search', 
+      color: '#F0E68C', 
+      speed: 0.35, 
+      description: 'One by one explorer',
+      emoji: '🔦',
+      category: 'Search'
+    },
+    { 
+      name: 'Hash Search', 
+      color: '#FFA07A', 
+      speed: 0.98, 
+      description: 'Instant access wizard',
+      emoji: '#️⃣',
+      category: 'Search'
+    },
+    { 
+      name: 'Interpolation Search', 
+      color: '#98FB98', 
+      speed: 0.89, 
+      description: 'Smart guesser',
+      emoji: '🎯',
+      category: 'Search'
+    },
+
+    //graph algorithms
+
+
 
 
