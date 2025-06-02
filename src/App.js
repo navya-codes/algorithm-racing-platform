@@ -129,6 +129,99 @@ const AlgorithmRacingPlatform = () => {
     },
 
     //graph algorithms
+    { 
+      name: 'Dijkstra', 
+      color: '#87CEEB', 
+      speed: 0.78, 
+      description: 'Shortest path finder',
+      emoji: '🗺️',
+      category: 'Graph'
+    },
+    { 
+      name: 'A* Search', 
+      color: '#DEB887', 
+      speed: 0.85, 
+      description: 'Heuristic pathfinder',
+      emoji: '🧭',
+      category: 'Graph'
+    },
+    { 
+      name: 'BFS', 
+      color: '#F5DEB3', 
+      speed: 0.72, 
+      description: 'Breadth-first explorer',
+      emoji: '🌊',
+      category: 'Graph'
+    },
+    { 
+      name: 'DFS', 
+      color: '#FFE4E1', 
+      speed: 0.70, 
+      description: 'Depth-first diver',
+      emoji: '🕳️',
+      category: 'Graph'
+    },
+
+    //tree algorithms
+    { 
+      name: 'AVL Tree', 
+      color: '#E6E6FA', 
+      speed: 0.83, 
+      description: 'Self-balancing master',
+      emoji: '⚖️',
+      category: 'Tree'
+    },
+    { 
+      name: 'Red-Black Tree', 
+      color: '#CD5C5C', 
+      speed: 0.81, 
+      description: 'Color-coded balancer',
+      emoji: '🔴',
+      category: 'Tree'
+    },
+    { 
+      name: 'B-Tree', 
+      color: '#32CD32', 
+      speed: 0.79, 
+      description: 'Multi-way organizer',
+      emoji: '🌳',
+      category: 'Tree'
+    },
+    // dynamic programming
+    { 
+      name: 'Fibonacci DP', 
+      color: '#FFD700', 
+      speed: 0.77, 
+      description: 'Memory master',
+      emoji: '🧠',
+      category: 'Dynamic'
+    },
+    { 
+      name: 'Knapsack DP', 
+      color: '#FF69B4', 
+      speed: 0.74, 
+      description: 'Optimization expert',
+      emoji: '🎒',
+      category: 'Dynamic'
+    },
+    // String Algorithms
+    { 
+      name: 'KMP Search', 
+      color: '#40E0D0', 
+      speed: 0.86, 
+      description: 'Pattern matching pro',
+      emoji: '🔤',
+      category: 'String'
+    },
+    { 
+      name: 'Boyer-Moore', 
+      color: '#EE82EE', 
+      speed: 0.91, 
+      description: 'Backward searcher',
+      emoji: '⏪',
+      category: 'String'
+    }
+  ];
 
 
 
