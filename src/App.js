@@ -223,6 +223,51 @@ const AlgorithmRacingPlatform = () => {
     }
   ];
 
+  const raceTypes = [
+    { name: 'Sorting Sprint', description: 'Sort 50 random numbers', emoji: '🏃‍♂️', category: 'Sorting' },
+    { name: 'Big Data Marathon', description: 'Sort 500 numbers', emoji: '🏃‍♀️', category: 'Sorting' },
+    { name: 'Reverse Challenge', description: 'Sort reverse-ordered data', emoji: '🔄', category: 'Sorting' },
+    { name: 'Search & Destroy', description: 'Find target in 100 numbers', emoji: '🔍', category: 'Search' },
+    { name: 'Pathfinding Race', description: 'Navigate through maze', emoji: '🗺️', category: 'Graph' },
+    { name: 'Tree Building Contest', description: 'Build balanced tree', emoji: '🌳', category: 'Tree' },
+    { name: 'String Match Challenge', description: 'Find pattern in text', emoji: '🔤', category: 'String' },
+    { name: 'DP Optimization', description: 'Solve complex problem', emoji: '🧠', category: 'Dynamic' }
+  ];
+
+  const [selectedRaceType, setSelectedRaceType] = useState(raceTypes[0]);
+
+  // Filter algorithms based on category and race type
+  const filteredAlgorithms = algorithms.filter(algo => {
+    if (filterCategory === 'All') return true;
+    return algo.category === filterCategory;
+  }).filter(algo => {
+    // Show relevant algorithms for the race type
+    if (selectedRaceType.category === 'All') return true;
+    return algo.category === selectedRaceType.category;
+  });
+
+   // Generate race data based on type
+  const generateRaceData = useCallback(() => {
+    let size = selectedRaceType.name.includes('Big Data') ? 500 : 50;
+    let newData = [];
+    
+    if (selectedRaceType.name.includes('Reverse')) {
+      for (let i = size; i > 0; i--) {
+        newData.push(i);
+      }
+    } else {
+      for (let i = 0; i < size; i++) {
+        newData.push(Math.floor(Math.random() * 100) + 1);
+      }
+    }
+    
+    setRaceData(newData);
+  }, [selectedRaceType]);
+
+
+
+
+
 
 
 
