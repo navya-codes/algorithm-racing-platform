@@ -264,6 +264,51 @@ const AlgorithmRacingPlatform = () => {
     setRaceData(newData);
   }, [selectedRaceType]);
 
+  //timer effect
+
+  useEffect(() => {
+    let interval = null;
+    if (isRunning && raceState === 'racing') {
+      interval = setInterval(() => {
+        setRaceTime(time => time + 0.1);
+      }, 100);
+    } else if (!isRunning) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isRunning, raceState]);
+
+  // Algorithm selection
+  const toggleAlgorithm = (algo) => {
+    if (selectedAlgorithms.find(a => a.name === algo.name)) {
+      setSelectedAlgorithms(selectedAlgorithms.filter(a => a.name !== algo.name));
+    } else if (selectedAlgorithms.length < 6) {
+      setSelectedAlgorithms([...selectedAlgorithms, algo]);
+    }
+  };
+  // Start race
+  const startRace = () => {
+    if (selectedAlgorithms.length < 2) return;
+    
+    generateRaceData();
+    setRaceState('racing');
+    setIsRunning(true);
+    setRaceTime(0);
+    setWinners([]);
+    
+    // Initialize progress
+    const initialProgress = {};
+    selectedAlgorithms.forEach(algo => {
+      initialProgress[algo.name] = 0;
+    });
+    setRaceProgress(initialProgress);
+
+    // simulate race progress
+
+    
+
+
+
 
 
 
