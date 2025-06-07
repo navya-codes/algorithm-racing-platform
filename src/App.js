@@ -305,6 +305,47 @@ const AlgorithmRacingPlatform = () => {
 
     // simulate race progress
 
+    const raceInterval = setInterval(() => {
+      setRaceProgress(prev => {
+        const newProgress = { ...prev };
+        let raceFinished = false;
+        
+        selectedAlgorithms.forEach(algo => {
+          if (newProgress[algo.name] < 100) {
+            // Add some randomness to make it exciting
+            const speedVariation = 0.8 + Math.random() * 0.4;
+            const progressIncrement = algo.speed * speedVariation * (2 + Math.random());
+            newProgress[algo.name] = Math.min(100, newProgress[algo.name] + progressIncrement);
+            
+            // Check if this algorithm finished
+            if (newProgress[algo.name] >= 100 && !winners.find(w => w.name === algo.name)) {
+              setWinners(prev => [...prev, { ...algo, position: prev.length + 1 }]);
+              
+              // Add celebration message
+              setChatMessages(prev => [...prev, {
+                user: "RaceBot",
+                message: `🏆 ${algo.name} ${algo.emoji} finished in position ${prev.length + 1}!`
+              }]);
+            }
+          }
+        });
+
+// Check if race is finished
+        if (Object.values(newProgress).every(progress => progress >= 100)) {
+          raceFinished = true;
+        }
+        
+        if (raceFinished) {
+          clearInterval(raceInterval);
+          setRaceState('finished');
+          setIsRunning(false);
+        }
+        
+        return newProgress;
+      });
+    }, 100);
+  };
+
     
 
 
