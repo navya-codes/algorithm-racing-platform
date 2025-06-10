@@ -346,14 +346,17 @@ const AlgorithmRacingPlatform = () => {
     }, 100);
   };
 
-    
 
-
-
-
-
-
-
-
-
+// Reset race
+  const resetRace = () => {
+    setRaceState('setup');
+    setRaceProgress({});
+    setWinners([]);
+    setRaceTime(0);
+    setIsRunning(false);
+    setChatMessages(prev => [...prev, {
+      user: "RaceBot",
+      message: "Ready for another race! Choose your algorithms! 🏁"
+    }]);
+  };
 
