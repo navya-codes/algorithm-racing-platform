@@ -360,3 +360,38 @@ const AlgorithmRacingPlatform = () => {
     }]);
   };
 
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white p-4">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-5xl font-bold mb-2">
+          <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
+            Algorithm Racing Platform
+          </span> 🏁
+        </h1>
+        <p className="text-xl text-blue-200">Mario Kart but for algorithms!</p>
+      </div>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+         {/* Left Panel - Algorithm Selection & Race Setup */}
+        <div className="lg:col-span-1 space-y-6">
+
+       {/* Race Type Selection */}
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <h3 className="text-xl font-bold mb-4 flex items-center">
+              <Timer className="mr-2" /> Race Type
+            </h3>
+            <div className="space-y-3">
+              {raceTypes.map(type => (
+                <button
+                  key={type.name}
+                  onClick={() => {
+                    setSelectedRaceType(type);
+                    setFilterCategory(type.category);
+                    setSelectedAlgorithms([]); // Clear selection when changing race type
+                  }}
+
+
+
+
