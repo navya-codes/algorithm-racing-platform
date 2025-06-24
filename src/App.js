@@ -4,7 +4,7 @@ const AlgorithmRacingPlatform = () => {
   const [raceState, setRaceState] = useState('setup');
   const [selectedAlgorithms, setSelectedAlgorithms] = useState([]);
   const [filterCategory, setFilterCategory] = useState('All');
-  const [raceData, setRaceData] = useState([]);
+  const [, setRaceData] = useState([]);
   const [raceProgress, setRaceProgress] = useState({});
   const [winners, setWinners] = useState([]);
   const [chatMessages, setChatMessages] = useState([
