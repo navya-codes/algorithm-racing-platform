@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Play, Pause, RotateCcw, Trophy, Users, MessageCircle, Timer } from 'lucide-react';
-
+import { Play, RotateCcw, Trophy, MessageCircle, Timer } from 'lucide-react';
 const AlgorithmRacingPlatform = () => {
   const [raceState, setRaceState] = useState('setup');
   const [selectedAlgorithms, setSelectedAlgorithms] = useState([]);
@@ -613,6 +612,7 @@ const AlgorithmRacingPlatform = () => {
 };
 
 export default AlgorithmRacingPlatform;
+       
 
 
 
