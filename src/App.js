@@ -391,6 +391,228 @@ const AlgorithmRacingPlatform = () => {
                     setFilterCategory(type.category);
                     setSelectedAlgorithms([]); // Clear selection when changing race type
                   }}
+                  className={`w-full p-3 rounded-lg text-left transition-all ${
+                    selectedRaceType.name === type.name
+                      ? 'bg-yellow-500/30 border border-yellow-400'
+                      : 'bg-white/5 hover:bg-white/10'
+                  }`}
+                >
+                  <div className="font-semibold">{type.emoji} {type.name}</div>
+                  <div className="text-sm text-gray-300">{type.description}</div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    <span className="bg-white/20 px-2 py-1 rounded">{type.category}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+{/* Algorithm Selection */}
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <h3 className="text-xl font-bold mb-4">
+              Choose Your Racers ({selectedAlgorithms.length}/6)
+            </h3>
+            
+            {/* Category Filter */}
+            <div className="mb-4">
+              <div className="flex flex-wrap gap-2">
+                {['All', 'Sorting', 'Search', 'Graph', 'Tree', 'Dynamic', 'String'].map(category => (
+                  <button
+                    key={category}
+                    onClick={() => setFilterCategory(category)}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                      filterCategory === category
+                        ? 'bg-yellow-500 text-black'
+                        : 'bg-white/20 hover:bg-white/30'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+          <div className="grid grid-cols-1 gap-2 max-h-96 overflow-y-auto">
+              {filteredAlgorithms.map(algo => (
+                <button
+                  key={algo.name}
+                  onClick={() => toggleAlgorithm(algo)}
+                  disabled={!selectedAlgorithms.find(a => a.name === algo.name) && selectedAlgorithms.length >= 6}
+                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                    selectedAlgorithms.find(a => a.name === algo.name)
+                      ? `border-2 shadow-lg shadow-${algo.color}/50`
+                      : !selectedAlgorithms.find(a => a.name === algo.name) && selectedAlgorithms.length >= 6
+                      ? 'border-white/10 opacity-50 cursor-not-allowed'
+                      : 'border-white/20 hover:border-white/40'
+                  }`}
+                  style={{
+                    backgroundColor: selectedAlgorithms.find(a => a.name === algo.name) 
+                      ? `${algo.color}30` 
+                      : 'rgba(255,255,255,0.05)'
+                  }}
+                >
+                  
+                   <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="font-bold text-sm">{algo.emoji} {algo.name}</div>
+                      <div className="text-xs text-gray-300">{algo.description}</div>
+                      <div className="text-xs text-gray-400 mt-1">
+                        <span className="bg-white/20 px-2 py-1 rounded">{algo.category}</span>
+                      </div>
+                    </div>
+                    <div className="text-lg ml-2">
+                      {selectedAlgorithms.find(a => a.name === algo.name) ? '✅' : '⭕'}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+         {/* Race Controls */}
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <div className="flex flex-col gap-4">
+              {raceState === 'setup' && (
+                <button
+                  onClick={startRace}
+                  disabled={selectedAlgorithms.length < 2}
+                  className={`py-4 px-6 rounded-lg font-bold text-lg transition-all ${
+                    selectedAlgorithms.length >= 2
+                      ? 'bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 shadow-lg'
+                      : 'bg-gray-600 cursor-not-allowed'
+                  }`}
+                >
+                  <Play className="inline-block mr-2" />
+                  START RACE!
+                </button>
+              )}
+
+              {(raceState === 'racing' || raceState === 'finished') && (
+                <button
+                  onClick={resetRace}
+                  className="py-4 px-6 rounded-lg font-bold text-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg"
+                >
+                  <RotateCcw className="inline-block mr-2" />
+                  NEW RACE
+                </button>
+              )}
+              
+              <div className="text-center">
+                <div className="text-2xl font-bold">⏱️ {raceTime.toFixed(1)}s</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Center Panel - Race Track */}
+        <div className="lg:col-span-2 space-y-6">
+
+          {/* Race Track */}
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <h3 className="text-xl font-bold mb-4 text-center">🏁 Race Track 🏁</h3>
+            
+            {selectedAlgorithms.length === 0 ? (
+              <div className="text-center py-12 text-gray-400">
+                <div className="text-4xl mb-4">🏎️</div>
+                <p>Select algorithms to start racing!</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {selectedAlgorithms.map((algo, index) => (
+                  <div key={algo.name} className="relative">
+                    {/* Track */}
+                    <div className="h-16 bg-gray-800 rounded-lg border-2 border-white/20 relative overflow-hidden">
+                      {/* Finish Line */}
+                      <div className="absolute right-0 top-0 h-full w-2 bg-gradient-to-b from-white to-gray-300"></div>
+                      
+                      {/* Algorithm Car */}
+                      <div 
+                        className="absolute top-2 h-12 w-12 rounded-lg flex items-center justify-center text-2xl transition-all duration-300 shadow-lg"
+                        style={{
+                          backgroundColor: algo.color,
+                          left: `${(raceProgress[algo.name] || 0) * 0.9}%`,
+                          transform: raceProgress[algo.name] >= 100 ? 'scale(1.2)' : 'scale(1)'
+                        }}
+                
+                      
+                    >
+                        {algo.emoji}
+                      </div>
+                      
+                      {/* Progress Bar */}
+                      <div 
+                        className="absolute bottom-0 h-1 transition-all duration-300"
+                        style={{
+                          backgroundColor: algo.color,
+                          width: `${raceProgress[algo.name] || 0}%`
+                        }}
+                      ></div>
+                    </div>
+
+
+                  {/* Algorithm Info */}
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="font-bold" style={{ color: algo.color }}>
+                        {algo.name}
+                      </span>
+                      <span className="text-sm">
+                        {Math.round(raceProgress[algo.name] || 0)}%
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Leaderboard */}
+          {winners.length > 0 && (
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+              <h3 className="text-xl font-bold mb-4 flex items-center">
+                <Trophy className="mr-2 text-yellow-400" /> Race Results
+              </h3>
+              <div className="space-y-3">
+                {winners.map((winner, index) => (
+                  <div 
+                    key={winner.name}
+                    className="flex items-center justify-between p-3 rounded-lg"
+                    style={{ backgroundColor: `${winner.color}20` }}
+
+                  >
+                    <div className="flex items-center">
+                      <span className="text-2xl mr-3">
+                        {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏆'}
+                      </span>
+                      <span className="font-bold">{winner.name} {winner.emoji}</span>
+                    </div>
+                    <span className="text-sm">Position {winner.position}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+        {/* Chat */}
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+            <h3 className="text-xl font-bold mb-4 flex items-center">
+              <MessageCircle className="mr-2" /> Race Chat
+            </h3>
+            <div className="space-y-3 max-h-40 overflow-y-auto">
+              {chatMessages.slice(-6).map((msg, index) => (
+                <div key={index} className="flex gap-3">
+                  <span className="font-bold text-blue-300">{msg.user}:</span>
+                  <span className="text-gray-200">{msg.message}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AlgorithmRacingPlatform;
 
 
 
