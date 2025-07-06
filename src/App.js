@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Play, RotateCcw, Trophy, MessageCircle, Timer } from 'lucide-react';
+
 const AlgorithmRacingPlatform = () => {
   const [raceState, setRaceState] = useState('setup');
   const [selectedAlgorithms, setSelectedAlgorithms] = useState([]);
@@ -19,7 +20,7 @@ const AlgorithmRacingPlatform = () => {
     // Classic Sorting Algorithms
     { 
       name: 'Bubble Sort', 
-      color: '#3B82F6', 
+      color: '#FF6B6B', 
       speed: 0.3, 
       description: 'Slow but steady',
       emoji: '🐌',
@@ -27,7 +28,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Quick Sort', 
-      color: '#1E40AF', 
+      color: '#4ECDC4', 
       speed: 0.95, 
       description: 'Lightning fast',
       emoji: '⚡',
@@ -35,7 +36,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Merge Sort', 
-      color: '#2563EB', 
+      color: '#45B7D1', 
       speed: 0.85, 
       description: 'Reliable performer',
       emoji: '🔄',
@@ -43,7 +44,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Heap Sort', 
-      color: '#1D4ED8', 
+      color: '#96CEB4', 
       speed: 0.75, 
       description: 'Steady climber',
       emoji: '🏔️',
@@ -51,34 +52,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Selection Sort', 
-      color: '#60A5FA', 
-      speed: 0.4, 
-      description: 'Methodical approach',
-      emoji: '🎯',
-      category: 'Sorting'
-    },
-
-    //advanced sorting
-    { 
-      name: 'Insertion Sort', 
-      color: '#93C5FD', 
-      speed: 0.5, 
-      description: 'Good with small data',
-      emoji: '📝',
-      category: 'Sorting'
-    },
-
-    { 
-      name: 'Heap Sort', 
-      color: '#1D4ED8', 
-      speed: 0.75, 
-      description: 'Steady climber',
-      emoji: '🏔️',
-      category: 'Sorting'
-    },
-    { 
-      name: 'Selection Sort', 
-      color: '#60A5FA', 
+      color: '#FECA57', 
       speed: 0.4, 
       description: 'Methodical approach',
       emoji: '🎯',
@@ -86,17 +60,49 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Insertion Sort', 
-      color: '#93C5FD', 
+      color: '#FF9FF3', 
       speed: 0.5, 
       description: 'Good with small data',
       emoji: '📝',
       category: 'Sorting'
     },
-
-    //search algorithms
+    // Advanced Sorting
+    { 
+      name: 'Radix Sort', 
+      color: '#A8E6CF', 
+      speed: 0.88, 
+      description: 'Digit by digit champion',
+      emoji: '🔢',
+      category: 'Sorting'
+    },
+    { 
+      name: 'Counting Sort', 
+      color: '#FFB3BA', 
+      speed: 0.92, 
+      description: 'Number counting master',
+      emoji: '🧮',
+      category: 'Sorting'
+    },
+    { 
+      name: 'Shell Sort', 
+      color: '#FFDFBA', 
+      speed: 0.68, 
+      description: 'Gap jumping specialist',
+      emoji: '🐚',
+      category: 'Sorting'
+    },
+    { 
+      name: 'Bucket Sort', 
+      color: '#BAE1FF', 
+      speed: 0.82, 
+      description: 'Divide and conquer',
+      emoji: '🪣',
+      category: 'Sorting'
+    },
+    // Search Algorithms
     { 
       name: 'Binary Search', 
-      color: '#059669', 
+      color: '#DDA0DD', 
       speed: 0.95, 
       description: 'Divide and find',
       emoji: '🔍',
@@ -104,7 +110,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Linear Search', 
-      color: '#10B981', 
+      color: '#F0E68C', 
       speed: 0.35, 
       description: 'One by one explorer',
       emoji: '🔦',
@@ -112,7 +118,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Hash Search', 
-      color: '#047857', 
+      color: '#FFA07A', 
       speed: 0.98, 
       description: 'Instant access wizard',
       emoji: '#️⃣',
@@ -120,17 +126,16 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Interpolation Search', 
-      color: '#065F46',
+      color: '#98FB98', 
       speed: 0.89, 
       description: 'Smart guesser',
       emoji: '🎯',
       category: 'Search'
     },
-
-    //graph algorithms
+    // Graph Algorithms
     { 
       name: 'Dijkstra', 
-      color: '#EA580C',
+      color: '#87CEEB', 
       speed: 0.78, 
       description: 'Shortest path finder',
       emoji: '🗺️',
@@ -138,7 +143,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'A* Search', 
-      color: '#DC2626' ,
+      color: '#DEB887', 
       speed: 0.85, 
       description: 'Heuristic pathfinder',
       emoji: '🧭',
@@ -146,7 +151,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'BFS', 
-      color: '#F97316', 
+      color: '#F5DEB3', 
       speed: 0.72, 
       description: 'Breadth-first explorer',
       emoji: '🌊',
@@ -154,17 +159,16 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'DFS', 
-      color: '#FB923C', 
+      color: '#FFE4E1', 
       speed: 0.70, 
       description: 'Depth-first diver',
       emoji: '🕳️',
       category: 'Graph'
     },
-
-    //tree algorithms
+    // Tree Algorithms
     { 
       name: 'AVL Tree', 
-      color: '#92400E', 
+      color: '#E6E6FA', 
       speed: 0.83, 
       description: 'Self-balancing master',
       emoji: '⚖️',
@@ -172,7 +176,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Red-Black Tree', 
-      color: '#B91C1C',  
+      color: '#CD5C5C', 
       speed: 0.81, 
       description: 'Color-coded balancer',
       emoji: '🔴',
@@ -180,16 +184,16 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'B-Tree', 
-      color: '#A16207',  
+      color: '#32CD32', 
       speed: 0.79, 
       description: 'Multi-way organizer',
       emoji: '🌳',
       category: 'Tree'
     },
-    // dynamic programming
+    // Dynamic Programming
     { 
       name: 'Fibonacci DP', 
-       color: '#7C3AED',  
+      color: '#FFD700', 
       speed: 0.77, 
       description: 'Memory master',
       emoji: '🧠',
@@ -197,7 +201,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Knapsack DP', 
-      color: '#8B5CF6', 
+      color: '#FF69B4', 
       speed: 0.74, 
       description: 'Optimization expert',
       emoji: '🎒',
@@ -206,7 +210,7 @@ const AlgorithmRacingPlatform = () => {
     // String Algorithms
     { 
       name: 'KMP Search', 
-      color: '#DB2777', 
+      color: '#40E0D0', 
       speed: 0.86, 
       description: 'Pattern matching pro',
       emoji: '🔤',
@@ -214,7 +218,7 @@ const AlgorithmRacingPlatform = () => {
     },
     { 
       name: 'Boyer-Moore', 
-      color: '#BE185D', 
+      color: '#EE82EE', 
       speed: 0.91, 
       description: 'Backward searcher',
       emoji: '⏪',
@@ -223,28 +227,17 @@ const AlgorithmRacingPlatform = () => {
   ];
 
   const raceTypes = [
-    { name: 'Sorting Sprint', description: 'Sort 50 random numbers', emoji: '🏃‍♂️', category: 'Sorting' , color: '#3B82F6' },
-    { name: 'Big Data Marathon', description: 'Sort 500 numbers', emoji: '🏃‍♀️', category: 'Sorting' , color: '#1E40AF' },
-    { name: 'Reverse Challenge', description: 'Sort reverse-ordered data', emoji: '🔄', category: 'Sorting', color: '#2563EB' },
-    { name: 'Search & Destroy', description: 'Find target in 100 numbers', emoji: '🔍', category: 'Search' , color: '#059669' },
-    { name: 'Pathfinding Race', description: 'Navigate through maze', emoji: '🗺️', category: 'Graph' , color: '#EA580C' },
-    { name: 'Tree Building Contest', description: 'Build balanced tree', emoji: '🌳', category: 'Tree' , color: '#92400E'},
-    { name: 'String Match Challenge', description: 'Find pattern in text', emoji: '🔤', category: 'String' , color: '#DB2777' },
-    { name: 'DP Optimization', description: 'Solve complex problem', emoji: '🧠', category: 'Dynamic' , color: '#7C3AED' }
+    { name: 'Sorting Sprint', description: 'Sort 50 random numbers', emoji: '🏃‍♂️', category: 'Sorting' },
+    { name: 'Big Data Marathon', description: 'Sort 500 numbers', emoji: '🏃‍♀️', category: 'Sorting' },
+    { name: 'Reverse Challenge', description: 'Sort reverse-ordered data', emoji: '🔄', category: 'Sorting' },
+    { name: 'Search & Destroy', description: 'Find target in 100 numbers', emoji: '🔍', category: 'Search' },
+    { name: 'Pathfinding Race', description: 'Navigate through maze', emoji: '🗺️', category: 'Graph' },
+    { name: 'Tree Building Contest', description: 'Build balanced tree', emoji: '🌳', category: 'Tree' },
+    { name: 'String Match Challenge', description: 'Find pattern in text', emoji: '🔤', category: 'String' },
+    { name: 'DP Optimization', description: 'Solve complex problem', emoji: '🧠', category: 'Dynamic' }
   ];
 
   const [selectedRaceType, setSelectedRaceType] = useState(raceTypes[0]);
-
-  // Category colors for better visual organization
-  const categoryColors = {
-    'All': '#6B7280',
-    'Sorting': '#3B82F6',
-    'Search': '#059669',
-    'Graph': '#EA580C',
-    'Tree': '#92400E',
-    'Dynamic': '#7C3AED',
-    'String': '#DB2777'
-  };
 
   // Filter algorithms based on category and race type
   const filteredAlgorithms = algorithms.filter(algo => {
@@ -256,7 +249,7 @@ const AlgorithmRacingPlatform = () => {
     return algo.category === selectedRaceType.category;
   });
 
-   // Generate race data based on type
+  // Generate race data based on type
   const generateRaceData = useCallback(() => {
     let size = selectedRaceType.name.includes('Big Data') ? 500 : 50;
     let newData = [];
@@ -274,8 +267,7 @@ const AlgorithmRacingPlatform = () => {
     setRaceData(newData);
   }, [selectedRaceType]);
 
-  //timer effect
-
+  // Timer effect
   useEffect(() => {
     let interval = null;
     if (isRunning && raceState === 'racing') {
@@ -296,6 +288,7 @@ const AlgorithmRacingPlatform = () => {
       setSelectedAlgorithms([...selectedAlgorithms, algo]);
     }
   };
+
   // Start race
   const startRace = () => {
     if (selectedAlgorithms.length < 2) return;
@@ -312,9 +305,8 @@ const AlgorithmRacingPlatform = () => {
       initialProgress[algo.name] = 0;
     });
     setRaceProgress(initialProgress);
-
-    // simulate race progress
-
+    
+    // Simulate race progress
     const raceInterval = setInterval(() => {
       setRaceProgress(prev => {
         const newProgress = { ...prev };
@@ -339,8 +331,8 @@ const AlgorithmRacingPlatform = () => {
             }
           }
         });
-
-// Check if race is finished
+        
+        // Check if race is finished
         if (Object.values(newProgress).every(progress => progress >= 100)) {
           raceFinished = true;
         }
@@ -356,8 +348,7 @@ const AlgorithmRacingPlatform = () => {
     }, 100);
   };
 
-
-// Reset race
+  // Reset race
   const resetRace = () => {
     setRaceState('setup');
     setRaceProgress({});
@@ -371,37 +362,26 @@ const AlgorithmRacingPlatform = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white p-4">
-      {/* Enhanced Header */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white p-4">
+      {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-5xl font-bold mb-2">
-          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
             Algorithm Racing Platform
           </span> 🏁
         </h1>
-        <p className="text-xl text-blue-200">Where algorithms compete for glory!</p>
-        <div className="mt-4 flex justify-center gap-4 text-sm">
-          <div className="bg-blue-500/20 px-3 py-1 rounded-full border border-blue-400/30">
-            🎯 Choose up to 6 algorithms
-          </div>
-          <div className="bg-green-500/20 px-3 py-1 rounded-full border border-green-400/30">
-            🏁 Watch them race
-          </div>
-          <div className="bg-yellow-500/20 px-3 py-1 rounded-full border border-yellow-400/30">
-            🏆 See who wins
-          </div>
-        </div>
+        <p className="text-xl text-blue-200">Mario Kart but for algorithms!</p>
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-         {/* Left Panel - Algorithm Selection & Race Setup */}
+        
+        {/* Left Panel - Algorithm Selection & Race Setup */}
         <div className="lg:col-span-1 space-y-6">
-
-       {/* Race Type Selection - Enhanced */}
+          
+          {/* Race Type Selection */}
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
             <h3 className="text-xl font-bold mb-4 flex items-center">
-              <Timer className="mr-2 text-yellow-400" /> Race Type
+              <Timer className="mr-2" /> Race Type
             </h3>
             <div className="space-y-3">
               {raceTypes.map(type => (
@@ -410,66 +390,42 @@ const AlgorithmRacingPlatform = () => {
                   onClick={() => {
                     setSelectedRaceType(type);
                     setFilterCategory(type.category);
-                    setSelectedAlgorithms([]);
+                    setSelectedAlgorithms([]); // Clear selection when changing race type
                   }}
-                  className={`w-full p-4 rounded-lg text-left transition-all duration-200 transform hover:scale-105 ${
+                  className={`w-full p-3 rounded-lg text-left transition-all ${
                     selectedRaceType.name === type.name
-                      ? 'ring-2 ring-yellow-400 shadow-lg shadow-yellow-400/20'
-                      : 'hover:bg-white/10'
+                      ? 'bg-yellow-500/30 border border-yellow-400'
+                      : 'bg-white/5 hover:bg-white/10'
                   }`}
-                  style={{
-                    backgroundColor: selectedRaceType.name === type.name 
-                      ? `${type.color}20` 
-                      : 'rgba(255,255,255,0.05)',
-                    borderLeft: `4px solid ${type.color}`
-                  }}
                 >
-                  <div className="font-semibold text-lg">{type.emoji} {type.name}</div>
-                  <div className="text-sm text-gray-300 mt-1">{type.description}</div>
-                  <div className="text-xs mt-2">
-                    <span 
-                      className="px-2 py-1 rounded-full text-white font-medium"
-                      style={{ backgroundColor: type.color }}
-                    >
-                      {type.category}
-                    </span>
+                  <div className="font-semibold">{type.emoji} {type.name}</div>
+                  <div className="text-sm text-gray-300">{type.description}</div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    <span className="bg-white/20 px-2 py-1 rounded">{type.category}</span>
                   </div>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Algorithm Selection - Enhanced */}
+          {/* Algorithm Selection */}
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-            <h3 className="text-xl font-bold mb-4 flex items-center justify-between">
-              <span>Choose Your Racers</span>
-              <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                selectedAlgorithms.length >= 2 
-                  ? 'bg-green-500/30 text-green-300 border border-green-400' 
-                  : 'bg-red-500/30 text-red-300 border border-red-400'
-              }`}>
-                {selectedAlgorithms.length}/6
-              </span>
+            <h3 className="text-xl font-bold mb-4">
+              Choose Your Racers ({selectedAlgorithms.length}/6)
             </h3>
             
-            {/* Category Filter - Enhanced */}
+            {/* Category Filter */}
             <div className="mb-4">
-              <p className="text-sm text-gray-300 mb-2">Filter by category:</p>
               <div className="flex flex-wrap gap-2">
                 {['All', 'Sorting', 'Search', 'Graph', 'Tree', 'Dynamic', 'String'].map(category => (
                   <button
                     key={category}
                     onClick={() => setFilterCategory(category)}
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all duration-200 transform hover:scale-105 ${
+                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
                       filterCategory === category
-                        ? 'text-white shadow-lg'
-                        : 'text-gray-300 hover:text-white border border-white/20 hover:border-white/40'
+                        ? 'bg-yellow-500 text-black'
+                        : 'bg-white/20 hover:bg-white/30'
                     }`}
-                    style={{
-                      backgroundColor: filterCategory === category 
-                        ? categoryColors[category] 
-                        : 'rgba(255,255,255,0.05)'
-                    }}
                   >
                     {category}
                   </button>
@@ -477,100 +433,72 @@ const AlgorithmRacingPlatform = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 gap-3 max-h-96 overflow-y-auto">
-              {filteredAlgorithms.map(algo => {
-                const isSelected = selectedAlgorithms.find(a => a.name === algo.name);
-                const isDisabled = !isSelected && selectedAlgorithms.length >= 6;
-                
-                return (
-                  <button
-                    key={algo.name}
-                    onClick={() => toggleAlgorithm(algo)}
-                    disabled={isDisabled}
-                    className={`p-4 rounded-lg transition-all duration-200 text-left transform ${
-                      isSelected
-                        ? 'ring-2 shadow-lg scale-105'
-                        : isDisabled
-                        ? 'opacity-50 cursor-not-allowed'
-                        : 'hover:scale-102 hover:shadow-md'
-                    }`}
-                    style={{
-                      backgroundColor: isSelected 
-                        ? `${algo.color}25` 
-                        : 'rgba(255,255,255,0.05)',
-                      borderLeft: `4px solid ${algo.color}`,
-                      ringColor: isSelected ? algo.color : 'transparent'
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="font-bold text-sm flex items-center">
-                          <span className="text-lg mr-2">{algo.emoji}</span>
-                          {algo.name}
-                        </div>
-                        <div className="text-xs text-gray-300 mt-1">{algo.description}</div>
-                        <div className="flex items-center justify-between mt-2">
-                          <span 
-                            className="text-xs px-2 py-1 rounded-full text-white font-medium"
-                            style={{ backgroundColor: categoryColors[algo.category] }}
-                          >
-                            {algo.category}
-                          </span>
-                          <div className="text-xs text-gray-400">
-                            Speed: {Math.round(algo.speed * 100)}%
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-2xl ml-3">
-                        {isSelected ? '✅' : '⭕'}
+            <div className="grid grid-cols-1 gap-2 max-h-96 overflow-y-auto">
+              {filteredAlgorithms.map(algo => (
+                <button
+                  key={algo.name}
+                  onClick={() => toggleAlgorithm(algo)}
+                  disabled={!selectedAlgorithms.find(a => a.name === algo.name) && selectedAlgorithms.length >= 6}
+                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                    selectedAlgorithms.find(a => a.name === algo.name)
+                      ? `border-2 shadow-lg shadow-${algo.color}/50`
+                      : !selectedAlgorithms.find(a => a.name === algo.name) && selectedAlgorithms.length >= 6
+                      ? 'border-white/10 opacity-50 cursor-not-allowed'
+                      : 'border-white/20 hover:border-white/40'
+                  }`}
+                  style={{
+                    backgroundColor: selectedAlgorithms.find(a => a.name === algo.name) 
+                      ? `${algo.color}30` 
+                      : 'rgba(255,255,255,0.05)'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="font-bold text-sm">{algo.emoji} {algo.name}</div>
+                      <div className="text-xs text-gray-300">{algo.description}</div>
+                      <div className="text-xs text-gray-400 mt-1">
+                        <span className="bg-white/20 px-2 py-1 rounded">{algo.category}</span>
                       </div>
                     </div>
-                  </button>
-                );
-              })}
+                    <div className="text-lg ml-2">
+                      {selectedAlgorithms.find(a => a.name === algo.name) ? '✅' : '⭕'}
+                    </div>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Race Controls - Enhanced */}
+          {/* Race Controls */}
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
             <div className="flex flex-col gap-4">
               {raceState === 'setup' && (
-                <>
-                  {selectedAlgorithms.length < 2 && (
-                    <div className="bg-yellow-500/20 border border-yellow-400 rounded-lg p-3 text-center">
-                      <p className="text-yellow-300 text-sm">
-                        ⚠️ Select at least 2 algorithms to start racing!
-                      </p>
-                    </div>
-                  )}
-                  <button
-                    onClick={startRace}
-                    disabled={selectedAlgorithms.length < 2}
-                    className={`py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 transform ${
-                      selectedAlgorithms.length >= 2
-                        ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 hover:scale-105 shadow-lg shadow-green-500/25'
-                        : 'bg-gray-600 cursor-not-allowed opacity-50'
-                    }`}
-                  >
-                    <Play className="inline-block mr-2" />
-                    START RACE! 🏁
-                  </button>
-                </>
+                <button
+                  onClick={startRace}
+                  disabled={selectedAlgorithms.length < 2}
+                  className={`py-4 px-6 rounded-lg font-bold text-lg transition-all ${
+                    selectedAlgorithms.length >= 2
+                      ? 'bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 shadow-lg'
+                      : 'bg-gray-600 cursor-not-allowed'
+                  }`}
+                >
+                  <Play className="inline-block mr-2" />
+                  START RACE!
+                </button>
               )}
               
               {(raceState === 'racing' || raceState === 'finished') && (
                 <button
                   onClick={resetRace}
-                  className="py-4 px-6 rounded-lg font-bold text-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-200 transform hover:scale-105 shadow-lg shadow-purple-500/25"
+                  className="py-4 px-6 rounded-lg font-bold text-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg"
                 >
                   <RotateCcw className="inline-block mr-2" />
-                  NEW RACE 🔄
+                  NEW RACE
                 </button>
               )}
               
-              <div className="text-center bg-gray-800/50 rounded-lg p-4">
-                <div className="text-3xl font-bold text-yellow-400">⏱️ {raceTime.toFixed(1)}s</div>
-                <div className="text-sm text-gray-300">Race Time</div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">⏱️ {raceTime.toFixed(1)}s</div>
               </div>
             </div>
           </div>
@@ -579,48 +507,31 @@ const AlgorithmRacingPlatform = () => {
         {/* Center Panel - Race Track */}
         <div className="lg:col-span-2 space-y-6">
           
-          {/* Race Track - Enhanced */}
+          {/* Race Track */}
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-            <h3 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
-              🏁 Race Track 🏁
-            </h3>
+            <h3 className="text-xl font-bold mb-4 text-center">🏁 Race Track 🏁</h3>
             
             {selectedAlgorithms.length === 0 ? (
-              <div className="text-center py-16 text-gray-400">
-                <div className="text-6xl mb-4">🏎️</div>
-                <p className="text-xl">Select algorithms to start racing!</p>
-                <p className="text-sm mt-2">Choose your champions from the left panel</p>
+              <div className="text-center py-12 text-gray-400">
+                <div className="text-4xl mb-4">🏎️</div>
+                <p>Select algorithms to start racing!</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {selectedAlgorithms.map((algo, index) => (
                   <div key={algo.name} className="relative">
                     {/* Track */}
-                    <div 
-                      className="h-20 rounded-lg border-2 relative overflow-hidden shadow-lg"
-                      style={{
-                        backgroundColor: '#1F2937',
-                        borderColor: algo.color,
-                        boxShadow: `0 4px 20px ${algo.color}20`
-                      }}
-                    >
-                      {/* Track Lines */}
-                      <div className="absolute inset-0 opacity-20">
-                        <div className="h-full w-full bg-gradient-to-r from-transparent via-white to-transparent" 
-                             style={{ clipPath: 'polygon(0 45%, 100% 45%, 100% 55%, 0 55%)' }}></div>
-                      </div>
-                      
+                    <div className="h-16 bg-gray-800 rounded-lg border-2 border-white/20 relative overflow-hidden">
                       {/* Finish Line */}
-                      <div className="absolute right-0 top-0 h-full w-3 bg-gradient-to-b from-white via-gray-300 to-white shadow-lg"></div>
+                      <div className="absolute right-0 top-0 h-full w-2 bg-gradient-to-b from-white to-gray-300"></div>
                       
                       {/* Algorithm Car */}
                       <div 
-                        className="absolute top-2 h-16 w-16 rounded-lg flex items-center justify-center text-3xl transition-all duration-300 shadow-xl border-2 border-white/30"
+                        className="absolute top-2 h-12 w-12 rounded-lg flex items-center justify-center text-2xl transition-all duration-300 shadow-lg"
                         style={{
                           backgroundColor: algo.color,
-                          left: `${Math.min((raceProgress[algo.name] || 0) * 0.88, 88)}%`,
-                          transform: raceProgress[algo.name] >= 100 ? 'scale(1.2) rotate(5deg)' : 'scale(1)',
-                          boxShadow: `0 8px 25px ${algo.color}50`
+                          left: `${(raceProgress[algo.name] || 0) * 0.9}%`,
+                          transform: raceProgress[algo.name] >= 100 ? 'scale(1.2)' : 'scale(1)'
                         }}
                       >
                         {algo.emoji}
@@ -628,35 +539,22 @@ const AlgorithmRacingPlatform = () => {
                       
                       {/* Progress Bar */}
                       <div 
-                        className="absolute bottom-0 h-2 transition-all duration-300 rounded-full"
+                        className="absolute bottom-0 h-1 transition-all duration-300"
                         style={{
                           backgroundColor: algo.color,
-                          width: `${raceProgress[algo.name] || 0}%`,
-                          boxShadow: `0 0 10px ${algo.color}`
+                          width: `${raceProgress[algo.name] || 0}%`
                         }}
                       ></div>
                     </div>
                     
                     {/* Algorithm Info */}
-                    <div className="flex justify-between items-center mt-3 px-2">
-                      <span className="font-bold text-lg" style={{ color: algo.color }}>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="font-bold" style={{ color: algo.color }}>
                         {algo.name}
                       </span>
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm text-gray-300">
-                          Speed: {Math.round(algo.speed * 100)}%
-                        </span>
-                        <span 
-                          className="font-bold text-lg px-3 py-1 rounded-full"
-                          style={{ 
-                            backgroundColor: `${algo.color}30`,
-                            color: algo.color,
-                            border: `1px solid ${algo.color}`
-                          }}
-                        >
-                          {Math.round(raceProgress[algo.name] || 0)}%
-                        </span>
-                      </div>
+                      <span className="text-sm">
+                        {Math.round(raceProgress[algo.name] || 0)}%
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -664,47 +562,33 @@ const AlgorithmRacingPlatform = () => {
             )}
           </div>
 
-          {/* Leaderboard - Enhanced */}
+          {/* Leaderboard */}
           {winners.length > 0 && (
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
               <h3 className="text-xl font-bold mb-4 flex items-center">
-                <Trophy className="mr-2 text-yellow-400" /> 🎉 Race Results 🎉
+                <Trophy className="mr-2 text-yellow-400" /> Race Results
               </h3>
               <div className="space-y-3">
                 {winners.map((winner, index) => (
                   <div 
                     key={winner.name}
-                    className="flex items-center justify-between p-4 rounded-lg border-2 transform transition-all duration-200 hover:scale-105"
-                    style={{ 
-                      backgroundColor: `${winner.color}15`,
-                      borderColor: winner.color,
-                      boxShadow: `0 4px 15px ${winner.color}20`
-                    }}
+                    className="flex items-center justify-between p-3 rounded-lg"
+                    style={{ backgroundColor: `${winner.color}20` }}
                   >
                     <div className="flex items-center">
-                      <span className="text-3xl mr-4">
+                      <span className="text-2xl mr-3">
                         {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏆'}
                       </span>
-                      <div>
-                        <div className="font-bold text-lg" style={{ color: winner.color }}>
-                          {winner.name} {winner.emoji}
-                        </div>
-                        <div className="text-sm text-gray-300">{winner.description}</div>
-                      </div>
+                      <span className="font-bold">{winner.name} {winner.emoji}</span>
                     </div>
-                    <div className="text-right">
-                      <div className="font-bold text-lg">#{winner.position}</div>
-                      <div className="text-sm text-gray-400">Position</div>
-                    </div>
+                    <span className="text-sm">Position {winner.position}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-         
-
-        {/* Chat */}
+          {/* Chat */}
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
             <h3 className="text-xl font-bold mb-4 flex items-center">
               <MessageCircle className="mr-2" /> Race Chat
@@ -725,8 +609,3 @@ const AlgorithmRacingPlatform = () => {
 };
 
 export default AlgorithmRacingPlatform;
-       
-
-
-
-
