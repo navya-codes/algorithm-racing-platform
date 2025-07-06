@@ -1,115 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorithm Racing Platform</title>
-    <link rel="stylesheet" href="app.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algorithm Racing Platform</title>
+  
+  <!-- Link to your global CSS -->
+  <link rel="stylesheet" href="App.css" />
+
+  <!-- Optional: Google Fonts for better aesthetics -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <div class="main-container">
-        <!-- Header -->
-        <div class="header">
-            <h1 class="title">
-                <span class="gradient-text">Algorithm Racing Platform</span> 🏁
-            </h1>
-            <p class="subtitle">Mario Kart but for algorithms!</p>
-        </div>
+  
+  <!-- React will inject your app here -->
+  <div id="root"></div>
 
-        <div class="content-grid">
-            <!-- Left Panel - Algorithm Selection & Race Setup -->
-            <div class="left-panel">
-                
-                <!-- Race Type Selection -->
-                <div class="panel">
-                    <h3 class="panel-title">
-                        <span class="timer-icon">⏱️</span> Race Type
-                    </h3>
-                    <div class="race-types" id="raceTypes">
-                        <!-- Race types will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Algorithm Selection -->
-                <div class="panel">
-                    <h3 class="panel-title">
-                        Choose Your Racers (<span id="selectedCount">0</span>/6)
-                    </h3>
-                    
-                    <!-- Category Filter -->
-                    <div class="category-filter">
-                        <div class="filter-buttons" id="categoryFilter">
-                            <!-- Filter buttons will be populated by JavaScript -->
-                        </div>
-                    </div>
-                    
-                    <div class="algorithms-grid" id="algorithmsGrid">
-                        <!-- Algorithms will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Race Controls -->
-                <div class="panel">
-                    <div class="controls">
-                        <button id="startRaceBtn" class="race-btn start-btn" disabled>
-                            <span class="play-icon">▶️</span>
-                            START RACE!
-                        </button>
-                        
-                        <button id="resetRaceBtn" class="race-btn reset-btn" style="display: none;">
-                            <span class="reset-icon">🔄</span>
-                            NEW RACE
-                        </button>
-                        
-                        <div class="timer-display">
-                            <div class="timer-text">⏱️ <span id="raceTimer">0.0</span>s</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Panel - Race Track -->
-            <div class="right-panel">
-                
-                <!-- Race Track -->
-                <div class="panel">
-                    <h3 class="panel-title track-title">🏁 Race Track 🏁</h3>
-                    
-                    <div id="raceTrack" class="race-track">
-                        <div class="no-selection">
-                            <div class="car-emoji">🏎️</div>
-                            <p>Select algorithms to start racing!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Leaderboard -->
-                <div class="panel" id="leaderboardPanel" style="display: none;">
-                    <h3 class="panel-title">
-                        <span class="trophy-icon">🏆</span> Race Results
-                    </h3>
-                    <div id="leaderboard" class="leaderboard">
-                        <!-- Winners will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Chat -->
-                <div class="panel">
-                    <h3 class="panel-title">
-                        <span class="chat-icon">💬</span> Race Chat
-                    </h3>
-                    <div id="chatMessages" class="chat-messages">
-                        <!-- Chat messages will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     <div id="root"></div>
-
-    <script src="app.js"></script>
 </body>
 </html>

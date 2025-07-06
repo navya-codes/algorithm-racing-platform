@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Play, RotateCcw, Trophy, MessageCircle, Timer } from 'lucide-react';
+import './App.css';
+
 
 const AlgorithmRacingPlatform = () => {
   const [raceState, setRaceState] = useState('setup');
