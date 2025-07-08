@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/algorithm-racing-platform/static/css/main.1ea6e4f9.css",
+    "main.js": "/algorithm-racing-platform/static/js/main.70a90649.js",
+    "index.html": "/algorithm-racing-platform/index.html",
+    "main.1ea6e4f9.css.map": "/algorithm-racing-platform/static/css/main.1ea6e4f9.css.map",
+    "main.70a90649.js.map": "/algorithm-racing-platform/static/js/main.70a90649.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ea6e4f9.css",
+    "static/js/main.70a90649.js"
+  ]
+}
